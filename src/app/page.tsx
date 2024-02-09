@@ -1,95 +1,87 @@
+'use client'
+import React, { useState } from "react";
+import Link from "next/link";
+import Header from "../../components/Header";
 import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+const Home = () => {
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsButtonClicked(true);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+    <div>
+      <Header />
+      <main>
+        <div className="container">
+          <h1>Full Stack Developer</h1>
+          <Image
+            src="/images/ZamPicture.jpg"
+            alt="Zamuxolo"
+            width={400}
+            height={400}
+          />
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            I am a motivated and driven full stack developer with a passion for building web applications
+            and solving complex problems. I have experience in various programming
+            languages and frameworks, including JavaScript, React, and Node.js.
           </p>
-        </a>
-      </div>
-    </main>
+          <p>
+            On this portfolio, you can find examples of my work, learn more about
+            my skills, and get in touch with me.
+          </p>
+          <button onClick={handleButtonClick}>
+            <Link href={"/Contact"} >
+              Contact Me
+            </Link>
+          </button>
+          {isButtonClicked && <p>Contact button clicked!</p>}
+        </div>
+      </main>
+      <style jsx>{`
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 1.5;
+          margin-bottom: 10px;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default Home;
